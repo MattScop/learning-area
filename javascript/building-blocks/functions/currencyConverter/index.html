@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <title>JavaScript Journey</title>
+    </head>
+
+    <body>
+        <p>Input the EURO amount in the text box below.</p>
+        <input id="textBox" type="text">
+        <div id="selector">
+            <select>
+                <option>--Make a Choice--</option>
+                <option value="USD">USD</option>
+                <option value="YUAN">YUAN</option>
+                <option value="VEF">VEF</option>
+            </select>
+        </div>
+        <p id="output"></p>
+
+        <script>
+            const euro = document.querySelector('#textBox');
+            const output = document.querySelector('#output');
+            const select = document.querySelector('select');
+
+            function convert() {
+                if (select.value === 'USD') {
+                    output.textContent = `${euro.value * 1.05} USD`;
+                } else if (select.value === 'YUAN') {
+                    output.textContent = `${euro.value * 7.05} YUAN`;
+                } else if (select.value === 'VEF') {                    
+                    output.textContent = `${euro.value * 567.47} VEF`;
+                } else {
+                    output.textContent = "Select a convert value";
+                }
+            };   
+    
+
+            euro.addEventListener('change', () => {
+                if (isNaN(euro.value)) {
+                    output.textContent = "Please insert a number";
+                } else {
+                    output.textContent = "Select your output from the dropdown list";
+                    convert();
+                }
+            });
+        </script>
+    </body>
+</html>
