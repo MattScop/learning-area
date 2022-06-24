@@ -26,7 +26,7 @@
 
   </body>
   <script>
-    const name = 'Mustafa';
+    const name = prompt("insert a name").toLowerCase();
     const para = document.createElement('p');
 
     const phonebook = [
@@ -39,8 +39,23 @@
       { name : 'Bert', number : '7780' },
       { name : 'Jada', number : '2282' },
     ]
-
     // Add your code here
+    const contacts = phonebook.map((contact) => {
+      return contact.name;
+    });
+
+    const numbers = phonebook.map((number) => {
+      return number.number;
+    });
+
+    let i = 0;
+    do {
+      if (name === contacts[i].toLowerCase()) {
+          para.textContent = `${contacts[i]} number is: ${numbers[i]}`;
+        break;
+      }
+      i++
+    } while (i < phonebook.length)
 
     // Don't edit the code below here!
     const section = document.querySelector('section');
